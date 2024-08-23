@@ -1,0 +1,128 @@
+/* General Styles */
+body, h1, h2, p, a {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color:e9ecef;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #dbdada;
+}
+
+.navbar .logo img {
+    height: 40px;
+}
+
+.navbar .nav-links {
+    display: flex;
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    gap: 40px;
+}
+
+.navbar .nav-links li {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .nav-links a {
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    font-weight: bolder;
+}
+
+.navbar .nav-links a:hover {
+    text-decoration: underline;
+}
+
+.menu-icon {
+    display: none;
+}
+
+/* Container */
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    margin-top: 80px; /* Adjust based on navbar height */
+}
+
+/* Chat Section */
+.chat-section {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    flex: 3;
+}
+
+.chat-box {
+    background-color: #F8F9FA; /* Light Gray */
+    border-radius: 8px;
+    padding: 10px;
+    height: 500px;
+    overflow-y: scroll;
+    margin-bottom: 20px;
+}
+
+.message {
+    margin-bottom: 15px;
+}
+
+.message-input {
+    display: flex;
+    gap: 10px;
+}
+
+.message-input textarea {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #001F3F; /* Navy Blue */
+}
+
+.message-input button {
+    background-color: rgb(76, 112, 241); /* Vibrant Yellow */
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    color: #001F3F; /* Navy Blue */
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* FAQ Section */
+.faq-section {
+    background-color: #E9ECEF; /* Light Gray */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    flex: 2;
+    margin-left: 20px;
+}
+
+.faq-item {
+    margin-bottom: 20px;
+}
+
+.faq-question {
+    cursor: pointer;
+    color: #001F3F; /* Navy Blue */
+}
+
+.faq-answer {
+    display: none;
+    color: #495057; /* Medium Gray */
+}

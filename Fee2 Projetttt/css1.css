@@ -1,0 +1,184 @@
+/* Basic Reset */
+body, h1, h2, p, a {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color:e9ecef;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #dbdada;
+}
+
+.navbar .logo img {
+    height: 40px;
+}
+
+.navbar .nav-links {
+    display: flex;
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    gap: 40px;
+}
+
+.navbar .nav-links li {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .nav-links a {
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    font-weight: bolder;
+}
+
+.navbar .nav-links a:hover {
+    text-decoration: underline;
+}
+
+.menu-icon {
+    display: none;
+}
+
+
+.hero {
+    position: relative;
+    text-align: center;
+    padding: 0; 
+    background-color:e9ecef;
+    height: 500px;
+    overflow: hidden;
+    
+}
+
+.hero img {
+    width: 100%;
+    height: 100%;
+    border-radius: 0; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
+    margin-top: -10px; 
+}
+
+.hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-top: 0;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Card Sections */
+.card {
+    max-width: 800px;
+    margin: 20px auto;
+    /* padding: 20px; */
+    background-color: white;
+    /* border-radius: 8px; */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    overflow: hidden;
+    /* height: 50vh; */
+    height: 400px;
+}
+.app{
+    height:430px;
+}
+
+.card img {
+    width: 100%;
+    max-width: 800px;
+    height: 300px;
+    /* border-radius: 8px; */
+}
+
+.card h2 {
+    font-size: 1.5rem;
+    margin: 10px 0;
+}
+
+.card p {
+    color: #555;
+    font-size: 1rem;
+}
+
+/* Download Button */
+.download-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.download-button:hover {
+    background-color: #0056b3;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+}
+/* Mobile Menu */
+@media (max-width: 768px) {
+    .navbar .nav-links {
+        display: none;
+        flex-direction: column;
+        gap: 20px;
+        background-color: #dbdada;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .navbar .nav-links.active {
+        display: flex;
+    }
+
+    .menu-icon {
+        display: block;
+        cursor: pointer;
+        font-size: 24px;
+        color: black;
+    }
+
+    .navbar .nav-links a {
+        padding: 15px;
+        font-size: 18px;
+    }
+}
+.right{
+    float: right;
+}

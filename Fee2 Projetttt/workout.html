@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workout Selection - FitMentor</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full h-16 bg-white flex justify-between px-4 items-center md:px-5 z-30 shadow-md">
+        <div class="w-52 h-52 py-1 flex-shrink-0 cursor-pointer">
+            <a href="index.html"><img src="FitMentor logo.png" alt="FitMentor logo"></a>
+        </div>
+        <ul class="md:flex hidden font-semibold text-[14px]">
+            <li class="md:mx-4 mx-2 lg:mx-8 cursor-pointer">WORKOUTS</li>
+            <li class="md:mx-4 mx-2 lg:mx-8 cursor-pointer">PROGRAMS</li>
+            <li class="md:mx-4 mx-2 lg:mx-8 cursor-pointer">BLOGS</li>
+            <a href="Community.html"><li class="md:mx-4 mx-2 lg:mx-8 cursor-pointer">COMMUNITY</li></a>
+            <li class="md:mx-4 mx-2 lg:mx-8 cursor-pointer">ABOUT</li>
+        </ul>
+        <div class="hidden md:block p-2 bg-blue-600 text-white cursor-pointer rounded-sm font-semibold">Join/SignIn</div>
+        <div class="md:hidden"><a class="text-4xl" href="#">&#8801;</a></div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container mx-auto mt-20 px-4 py-10">
+        <h1 class="text-4xl font-bold text-center mb-8">Choose Your Workout</h1>
+
+        <!-- Step 1: Select Muscle Group -->
+        <div class="mb-10">
+            <h2 class="text-2xl font-semibold mb-4">Step 1: Select Muscle Group</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <button class="muscle-group bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition duration-300" data-group="Biceps">Biceps</button>
+                <button class="muscle-group bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition duration-300" data-group="Triceps">Triceps</button>
+                <button class="muscle-group bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition duration-300" data-group="Chest">Chest</button>
+                <button class="muscle-group bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition duration-300" data-group="Back">Back</button>
+                <button class="muscle-group bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition duration-300" data-group="Legs">Legs</button>
+                <button class="muscle-group bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition duration-300" data-group="Shoulders">Shoulders</button>
+            </div>
+        </div>
+
+        <!-- Step 2: Choose Workout Type -->
+        <div class="mb-10">
+            <h2 class="text-2xl font-semibold mb-4">Step 2: Choose Workout Type</h2>
+            <div class="flex justify-center space-x-4">
+                <button class="workout-type bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition duration-300" data-type="Home">Home Workout</button>
+                <button class="workout-type bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition duration-300" data-type="Gym">Gym Workout</button>
+            </div>
+        </div>
+
+        <!-- Step 3: Display Filtered Exercises -->
+        <div id="filtered-exercises" class="hidden mb-10">
+            <h2 class="text-2xl font-semibold mb-4">Step 3: Select an Exercise</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
+        </div>
+    </div>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <div class="mb-4">
+                <a href="index.html"><img src="https://via.placeholder.com/200x64?text=FitMentor+Logo" alt="FitMentor logo" class="mx-auto"></a>
+            </div>
+            <p class="mb-4">&copy; 2024 FitMentor. All rights reserved.</p>
+            <ul class="flex justify-center space-x-6 mb-4">
+                <li><a href="#" class="hover:text-gray-400">Privacy Policy</a></li>
+                <li><a href="#" class="hover:text-gray-400">Terms of Service</a></li>
+                <li><a href="#" class="hover:text-gray-400">Contact Us</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script>
+        const exercises = [
+            {
+                id: 1,
+                name: "Push-ups",
+                muscleGroup: "Chest",
+                workoutType: "Exercise",
+                location: "Home",
+                equipment: "None",
+                level: "Beginner",
+                steps: [
+                    "Start in a plank position with your arms straight.",
+                    "Lower your body until your chest nearly touches the floor.",
+                    "Push yourself back up to the starting position."
+                ],
+                imageURL: "https://via.placeholder.com/600x400?text=Push-ups"
+            },
+            {
+                id: 2,
+                name: "Bicep Curls",
+                muscleGroup: "Biceps",
+                workoutType: "Exercise",
+                location: "Gym",
+                equipment: "Dumbbells",
+                level: "Intermediate",
+                steps: [
+                    "Stand with your feet shoulder-width apart, holding a dumbbell in each hand.",
+                    "Curl the weights while contracting your biceps.",
+                    "Lower the weights back to the starting position."
+                ],
+                imageURL: "https://via.placeholder.com/600x400?text=Bicep+Curls"
+            }
+        ];
+
+        let selectedMuscleGroup = "";
+        let selectedWorkoutType = "";
+
+        document.querySelectorAll('.muscle-group').forEach(button => {
+            button.addEventListener('click', () => {
+                selectedMuscleGroup = button.dataset.group;
+                filterExercises();
+            });
+        });
+
+        document.querySelectorAll('.workout-type').forEach(button => {
+            button.addEventListener('click', () => {
+                selectedWorkoutType = button.dataset.type;
+                filterExercises();
+            });
+        });
+
+        function filterExercises() {
+            if (selectedMuscleGroup && selectedWorkoutType) {
+                const filtered = exercises.filter(exercise => 
+                    exercise.muscleGroup === selectedMuscleGroup && 
+                    exercise.location === selectedWorkoutType
+                );
+                displayFilteredExercises(filtered);
+            }
+        }
+
+        function displayFilteredExercises(filteredExercises) {
+            const container = document.querySelector('#filtered-exercises .grid');
+            container.innerHTML = '';
+            filteredExercises.forEach(exercise => {
+                const exerciseCard = document.createElement('div');
+                exerciseCard.classList.add('bg-white', 'p-4', 'rounded-lg', 'shadow-lg', 'hover:shadow-xl', 'transition', 'duration-300');
+                exerciseCard.innerHTML = `
+                    <img src="${exercise.imageURL}" alt="${exercise.name}" class="mb-4">
+                    <h3 class="text-xl font-semibold mb-2">${exercise.name}</h3>
+                    <button onclick="viewExercise(${exercise.id})" class="bg-blue-600 text-white p-2 rounded">View Details</button>
+                `;
+                container.appendChild(exerciseCard);
+            });
+            document.getElementById('filtered-exercises').classList.remove('hidden');
+        }
+
+        function viewExercise(exerciseId) {
+            const exercise = exercises.find(e => e.id === exerciseId);
+            localStorage.setItem('selectedExercise', JSON.stringify(exercise));
+            window.location.href = 'exercise-details.html';
+        }
+    </script>
+
+</body>
+</html>
