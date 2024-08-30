@@ -7,7 +7,7 @@ body, h1, h2, p, a {
 
 body {
     font-family: Arial, sans-serif;
-    background-color:black;
+    background:#15171c;
 }
 
 /* Navbar */
@@ -101,7 +101,8 @@ body {
     margin: 20px auto;
     /* padding: 20px; */
     background-color: white;
-    /* border-radius: 8px; */
+    border: 3px solid #FFA500;
+    border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
     overflow: hidden;
@@ -127,6 +128,11 @@ body {
 .card p {
     color: #555;
     font-size: 1rem;
+}
+.after_hero{
+    display:flex;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 /* Download Button */
