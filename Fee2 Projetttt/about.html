@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel = "stylesheet" href="bootstrap-5.3.3-dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
     <script src="bootstrap-5.3.3-dist/js/bootstrap.min.js"></script>
     <style>
@@ -26,6 +27,7 @@ body {
     padding: 10px 20px;
     background-color:#15171c;
     height: 60px;
+    border-bottom: 2px solid #797777;
 }
 
 .navbar .logo img {
@@ -38,7 +40,7 @@ body {
     list-style: none;
     margin: 0 auto;
     padding: 0;
-    gap: 40px;
+    gap: 50px;
 }
 
 .navbar .nav-links li {
@@ -56,6 +58,28 @@ body {
 .navbar .nav-links a:hover {
     text-decoration: underline;
 }
+.loginbtn{
+    border: 2px solid #FFA500;
+    border-radius: 5px;
+    
+    
+    /* font-size: 16px;
+    font-weight: bold; */
+    
+}
+.loginbtn a{
+    text-decoration: none;
+    color: #FFA500;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.loginbtn button{
+    cursor: pointer;
+}
+.loginbtn button a{
+    font-weight: bold;
+}
 
 .menu-icon {
     display: none;
@@ -67,7 +91,7 @@ body {
             padding: 10px;
         }
       .find{
-        background-color:#242f57;
+        background-color:#15171c;
         color: white;
         padding-left: 200;
         text-align: center;
@@ -177,6 +201,59 @@ body {
     margin-left: 20px;
     margin-bottom: 20px;
 }
+.footer {
+    background-color: #15171c;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    border-top: 2px solid #797777;
+}
+
+.footer-logo img {
+    height: 90px;
+    margin-bottom: 12px;
+}
+
+.footer-social {
+    margin-bottom: 20px;
+}
+
+.footer-social .social-icon {
+    margin: 0 10px;
+    display: inline-block;
+    font-size: 32px;
+    color: #FFA500;
+    transition: color 0.3s;
+}
+
+.footer-social .social-icon:hover {
+    color: #b77b0c;
+}
+
+.footer-nav {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.footer-nav a {
+    text-decoration: none;
+    color: #FFA500;
+    transition: color 0.3s;
+}
+
+.footer-nav a:hover {
+    color: #b77b0c;
+}
+
+.footer p {
+    margin-top: 10px;
+    color: #CCCCCC;
+    font-size: 14px;
+}
 
     </style>
 
@@ -194,8 +271,11 @@ body {
         <li><a href="community.html">COMMUNITY</a></li>
         <li><a href="#">TOOLS</a></li>
         <li><a href="about.html">ABOUT</a></li>
-        <li><a href="login">LOG IN</a></li>
+       
     </ul>
+    <div class="loginbtn">
+      <button><a href="login.html"></a>Login/Register</button>
+  </div>
 </nav>
 <body class="bodd">
   <br>
@@ -278,8 +358,27 @@ function showSlides() {
 
 </section>
 
-<footer class="foot">
-  &copy; 2024 Copyright.
+<footer class="footer">
+  <div class="footer-logo">
+      <a href="index.html"><img src="logo-white-removebg-preview (1).png" alt="FitMentor logo"></a>
+  </div>
+  
+  <div class="footer-social">
+      <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+  </div>
+  
+  <ul class="footer-nav">
+      <li><a href="#">WORKOUTS</a></li>
+      <li><a href="#">PROGRAMS</a></li>
+      <li><a href="community.html">COMMUNITY</a></li>
+      <li><a href="#">TOOLS</a></li>
+      <li><a href="about.html">ABOUT</a></li>
+  </ul>
+  
+  <p>&copy; 2024 FitMentor. All rights reserved.</p>
 </footer>
 
 </html>
