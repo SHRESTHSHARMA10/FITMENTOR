@@ -7,7 +7,7 @@ body, h1, h2, p, a {
 
 body {
     font-family: Arial, sans-serif;
-    background-color:#15171c;
+    background-color: #15171c;
 }
 
 /* Navbar */
@@ -16,7 +16,7 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 10px 20px;
-    background-color:#15171c;
+    background-color: #15171c;
     height: 40px;
     border-bottom: 2px solid #797777;
 }
@@ -53,63 +53,74 @@ body {
 .menu-icon {
     display: none;
 }
-.loginbtn{
-    border: 2px solid #FFA500;
+
+.loginbtn {
+    border: 2px solid 15171c;
     border-radius: 5px;
-    
-    
-    /* font-size: 16px;
-    font-weight: bold; */
-    
 }
-.loginbtn a{
+
+.loginbtn a {
     text-decoration: none;
-    color: #FFA500;
+    color: white;
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
-}
-.loginbtn button{
-    cursor: pointer;
+    padding: 2px;
 }
 
+.loginbtn button {
+    cursor: pointer;
+    background-color: #FFA500;
+    color: white;
+    padding: 2px;
+}
 
 /* Main Content Styles */
 .container {
-    /* margin: 80px auto 0; */
     margin: 15px;
     padding: 2px;
 }
-.container .yo{
-    width: 100%;
-    height: 300px;
 
+.in {
+    height: auto;
+    width: 100%;
+    position: relative;
+}
+
+.yo img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.overlay-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #FFF;
+    padding: 0 20px; /* Add padding to prevent text from touching screen edges */
 }
 
 .title {
-    text-align: center;
     font-size: 36px;
     font-weight: bold;
-    color: #FFA500;
-    margin-top: 12px;
     margin-bottom: 14px;
 }
 
 .subtitle {
-    text-align: center;
     font-size: 18px;
-    color: #CCCCCC;
     margin-bottom: 32px;
 }
 
 .cta {
-    text-align: center;
-    margin-bottom: 32px;
+    margin-bottom: 20px;
 }
 
 .cta-button {
     background-color: #FFA500;
-    color:#f0eded;
+    color: #f0eded;
     padding: 12px 24px;
     border-radius: 8px;
     font-weight: bold;
@@ -119,71 +130,77 @@ body {
 }
 
 .cta-button:hover {
-    background-color:#b77b0c;
+    background-color: #b77b0c;
 }
 
-/* .why-join {
-    text-align: center;
-    margin-bottom: 48px;
-}
-
-.why-join h2 {
-    font-size: 24px;
-    font-weight: bold;
-    color:aliceblue;
-    margin-bottom: 24px;
-} */
-/* .offerings{
-    height: 300px;
-}
-.good_image{
-    width: 100%;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 16px;
-}
-.good_image img{
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 16px;
-} */
-.offerings {
-    height: auto; /* Adjust the height automatically based on content */
-    margin: 10px 0; /* Add some margin for spacing */
-    color:white ;/* Set the text color */
-    margin-top: 30px;
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+    .title {
+        font-size: 28px;
+    }
     
+    .subtitle {
+        font-size: 16px;
+    }
+    
+    .overlay-content {
+        top: 40%; /* Move the content slightly higher to prevent overlap */
+    }
+}
 
+@media screen and (max-width: 480px) {
+    .title {
+        font-size: 24px;
+    }
+    
+    .subtitle {
+        font-size: 14px;
+    }
+
+    .overlay-content {
+        top: 35%; /* Further adjust for smaller screens */
+    }
+}
+
+
+/* Offerings Section */
+.offerings {
+    height: auto;
+    margin: 10px 0;
+    color: white;
+    margin-top: 30px;
 }
 
 .good_image {
     width: 100%;
-    height: auto; /* Automatically adjust height */
+    height: auto;
     display: flex;
-    justify-content: center; /* Center the image horizontally */
-    align-items: center; /* Center the image vertically */
-    overflow: hidden; /* Ensure the image doesn't overflow */
-    
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
 .good_image img {
     width: 100%;
-    height: auto; /* Maintain the aspect ratio */
-    object-fit: cover; /* Ensure the image covers the container without distortion */
-    
+    height: auto;
+    object-fit: cover;
 }
-.offerings h2{
+
+.offerings h2 {
     font-size: 29px;
     font-weight: bold;
-    color:aliceblue;
+    color: aliceblue;
     margin-bottom: 24px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* margin-top: 20px; */
+    text-align: center;
+}
+
+/* Community Stories Section */
+.community-stories h2 {
+    font-size: 29px;
+    font-weight: bold;
+    color: #FFF;
+    text-align: center;
+    margin-bottom: 24px;
 }
 
 .cards {
@@ -194,7 +211,7 @@ body {
 }
 
 .card {
-    background-color:gray;
+    background-color: gray;
     padding: 24px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -243,68 +260,33 @@ body {
 .footer-social .social-icon {
     margin: 0 10px;
     display: inline-block;
-    font-size: 32px;
+    font-size: 24px;
     color: #FFA500;
+    text-decoration: none;
     transition: color 0.3s;
 }
 
 .footer-social .social-icon:hover {
-    color: #b77b0c;
+    color: #fff;
 }
 
 .footer-nav {
     list-style: none;
-    padding: 0;
-    margin: 20px 0;
+    margin-bottom: 20px;
     display: flex;
     justify-content: center;
-    gap: 30px;
+    gap: 50px;
+    padding-left: 0;
 }
 
 .footer-nav a {
     text-decoration: none;
     color: #FFA500;
-    transition: color 0.3s;
-}
-
-.footer-nav a:hover {
-    color: #b77b0c;
+    font-size: 16px;
 }
 
 .footer p {
-    margin-top: 10px;
-    color: #CCCCCC;
     font-size: 14px;
-}
-@media (max-width: 768px) {
-    .navbar .nav-links {
-        display: none;
-        flex-direction: column;
-        gap: 20px;
-        background-color: #dbdada;
-        position: absolute;
-        top: 60px;
-        right: 0;
-        width: 100%;
-        text-align: center;
-    }
-
-    .navbar .nav-links.active {
-        display: flex;
-    }
-
-    .menu-icon {
-        display: block;
-        cursor: pointer;
-        font-size: 24px;
-        color: #FFA500;
-    }
-
-    .navbar .nav-links a {
-        padding: 15px;
-        font-size: 18px;
-    }
-    .loginbtn{
-        display: none;
-    }
+    margin-top: 15px;
+    color: #ccc;
 }
