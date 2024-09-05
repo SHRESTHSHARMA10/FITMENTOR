@@ -1,4 +1,4 @@
-/* Basic Reset */
+
 body, h1, h2, p, a {
     margin: 0;
     padding: 0;
@@ -10,7 +10,7 @@ body {
     background:#15171c;
 }
 
-/* Navbar */
+
 .navbar {
     display: flex;
     align-items: center;
@@ -38,30 +38,25 @@ body {
     display: flex;
     align-items: center;
 }
-.loginbtn{
-    border: 2px solid #FFA500;
+.loginbtn {
+    border: 2px solid 15171c;
     border-radius: 5px;
-    /* color: #f32e2e; */
-    
-    
-    /* font-size: 16px;
-    font-weight: bold; */
-    
 }
-.loginbtn a{
+
+.loginbtn a {
     text-decoration: none;
-    /* color: #FFA500; */
-    
+    color: white;
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
+    padding: 2px;
 }
-.loginbtn button{
+
+.loginbtn button {
     cursor: pointer;
-}
-.loginbtn button a{
-    font-weight: bold;
     background-color: #FFA500;
+    color: white;
+    padding: 2px;
 }
 
 .navbar .nav-links a {
@@ -131,7 +126,7 @@ body {
     margin-right: auto;
 }
 
-/* Card Sections */
+
 .card {
     max-width: 800px;
     margin: 20px auto;
@@ -171,7 +166,7 @@ body {
     gap: 20px;
 }
 
-/* Download Button */
+
 .download-button {
     display: inline-block;
     padding: 10px 20px;
@@ -354,7 +349,7 @@ body {
     font-size: 14px;
 }
 
-/* Mobile Menu */
+
 @media (max-width: 768px) {
     .navbar .nav-links {
         display: none;
