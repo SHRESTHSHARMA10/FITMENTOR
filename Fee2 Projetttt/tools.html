@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Calculators</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+</head>
+<nav class="navbar">
+    <div class="logo">
+        <a href="index.html"><img src="logo-white-removebg-preview (1).png" alt="FitMentor logo"></a>
+    </div>
+    <div class="menu-icon" id="menu-icon">
+        &#9776;
+    </div>
+    <ul class="nav-links" id="nav-links">
+        <li><a href="#">WORKOUTS</a></li>
+        <li><a href="#">PROGRAMS</a></li>
+        <li><a href="community.html">COMMUNITY</a></li>
+        <li><a href="tools.html">TOOLS</a></li>
+        <li><a href="about.html">ABOUT</a></li>
+        <!-- <li class="loginbtn"><a href="login">LOG IN</a></li> -->
+    </ul>
+    <div class="loginbtn">
+        <button><a href="login.html"></a>Login/Register</button>
+    </div>
+</nav>
+
+<body class="bg-gray-100 min-h-screen p-8">
+    
+
+    <div class="max-w-6xl mx-auto">
+        <h1 class="text-3xl font-bold text-center mb-10">Fitness Calculators</h1>
+
+        <!-- Calculator Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- BMI Calculator Card -->
+            <div class="bg-white p-6 rounded-lg shadow-md cursor-pointer hover:shadow-lg transition"
+                onclick="openCalculator('bmi')">
+                <h2 class="text-xl font-semibold mb-2">BMI Calculator</h2>
+                <p class="text-gray-600">Calculate your Body Mass Index</p>
+            </div>
+
+            <!-- Calorie Calculator Card -->
+            <div class="bg-white p-6 rounded-lg shadow-md cursor-pointer hover:shadow-lg transition"
+                onclick="openCalculator('calorie')">
+                <h2 class="text-xl font-semibold mb-2">Calorie Calculator</h2>
+                <p class="text-gray-600">Estimate your daily calorie needs</p>
+            </div>
+
+            <!-- Body Fat Percentage Calculator Card -->
+            <div class="bg-white p-6 rounded-lg shadow-md cursor-pointer hover:shadow-lg transition"
+                onclick="openCalculator('bodyFat')">
+                <h2 class="text-xl font-semibold mb-2">Body Fat % Calculator</h2>
+                <p class="text-gray-600">Estimate your body fat percentage</p>
+            </div>
+        </div>
+
+        <!-- Calculator Modals -->
+        <div id="calculatorModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden overflow-y-auto h-full w-full">
+            <div class="relative top-20 mx-auto p-5 border w-11/12 max-w-4xl shadow-lg rounded-md bg-white">
+                <div id="calculatorContent" class="flex flex-col md:flex-row"></div>
+                <div class="text-center mt-4">
+                    <button onclick="closeCalculator()"
+                        class="px-4 py-2 bg-gray-500 text-white text-base font-medium rounded-md shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-300">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+        <div class="footer-logo">
+            <a href="index.html"><img src="logo-white-removebg-preview (1).png" alt="FitMentor logo"></a>
+        </div>
+        
+        <div class="footer-social">
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+        </div>
+        
+        <ul class="footer-nav">
+            <li><a href="#">WORKOUTS</a></li>
+            <li><a href="#">PROGRAMS</a></li>
+            <li><a href="community.html">COMMUNITY</a></li>
+            <li><a href="#">TOOLS</a></li>
+            <li><a href="about.html">ABOUT</a></li>
+        </ul>
+        
+        <p>&copy; 2024 FitMentor. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function openCalculator(type) {
+            const modal = document.getElementById('calculatorModal');
+            const content = document.getElementById('calculatorContent');
+            modal.classList.remove('hidden');
+
+            let calculatorHtml = '';
+            switch (type) {
+                case 'bmi':
+                    calculatorHtml = `
+                        <div class="md:w-1/2 p-4">
+                            <h2 class="text-2xl font-bold mb-4">BMI Calculator</h2>
+                            <div class="mb-4">
+                                <label class="block mb-2">Height (cm)</label>
+                                <input type="number" id="bmiHeight" class="w-full p-2 border rounded">
+                            </div>
+                            <div class="mb-4">
+                                <label class="block mb-2">Weight (kg)</label>
+                                <input type="number" id="bmiWeight" class="w-full p-2 border rounded">
+                            </div>
+                            <button onclick="calculateBMI()" class="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">Calculate BMI</button>
+                        </div>
+                        <div class="md:w-1/2 p-4 bg-gray-50 rounded-lg">
+                            <h3 class="text-xl font-semibold mb-2">Your Results</h3>
+                            <div id="bmiResult"></div>
+                        </div>
+                    `;
+                    break;
+                case 'calorie':
+                    calculatorHtml = `
+                        <div class="md:w-1/2 p-4">
+                            <h2 class="text-2xl font-bold mb-4">Calorie Calculator</h2>
+                            <div class="mb-4">
+                                <label class="block mb-2">Age</label>
+                                <input type="number" id="calorieAge" class="w-full p-2 border rounded">
+                            </div>
+                            <div class="mb-4">
+                                <label class="block mb-2">Gender</label>
+                                <select id="calorieGender" class="w-full p-2 border rounded">
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                            </div>
+                            <div class="mb-4">
+                                <label class="block mb-2">Height (cm)</label>
+                                <input type="number" id="calorieHeight" class="w-full p-2 border rounded">
+                            </div>
+                            <div class="mb-4">
+                                <label class="block mb-2">Weight (kg)</label>
+                                <input type="number" id="calorieWeight" class="w-full p-2 border rounded">
+                            </div>
+                            <div class="mb-4">
+                                <label class="block mb-2">Activity Level</label>
+                                <select id="calorieActivity" class="w-full p-2 border rounded">
+                                    <option value="1.2">Sedentary</option>
+                                    <option value="1.375">Lightly Active</option>
+                                    <option value="1.55">Moderately Active</option>
+                                    <option value="1.725">Very Active</option>
+                                    <option value="1.9">Extra Active</option>
+                                </select>
+                            </div>
+                            <button onclick="calculateCalories()" class="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">Calculate Calories</button>
+                        </div>
+                        <div class="md:w-1/2 p-4 bg-gray-50 rounded-lg">
+                            <h3 class="text-xl font-semibold mb-2">Your Results</h3>
+                            <div id="calorieResult"></div>
+                        </div>
+                    `;
+                    break;
+                case 'bodyFat':
+                    calculatorHtml = `
+                        <div class="md:w-1/2 p-4">
+                            <h2 class="text-2xl font-bold mb-4">Body Fat % Calculator</h2>
+                            <div class="mb-4">
+                                <label class="block mb-2">Gender</label>
+                                <select id="bodyFatGender" class="w-full p-2 border rounded">
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                            </div>
+                            <div class="mb-4">
+                                <label class="block mb-2">Height (cm)</label>
+                                <input type="number" id="bodyFatHeight" class="w-full p-2 border rounded">
+                            </div>
+                            <div class="mb-4">
+                                <label class="block mb-2">Neck Circumference (cm)</label>
+                                <input type="number" id="bodyFatNeck" class="w-full p-2 border rounded">
+                            </div>
+                            <div class="mb-4">
+                                <label class="block mb-2">Waist Circumference (cm)</label>
+                                <input type="number" id="bodyFatWaist" class="w-full p-2 border rounded">
+                            </div>
+                            <div id="bodyFatHipDiv" class="mb-4 hidden">
+                                <label class="block mb-2">Hip Circumference (cm)</label>
+                                <input type="number" id="bodyFatHip" class="w-full p-2 border rounded">
+                            </div>
+                            <button onclick="calculateBodyFat()" class="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">Calculate Body Fat %</button>
+                        </div>
+                        <div class="md:w-1/2 p-4 bg-gray-50 rounded-lg">
+                            <h3 class="text-xl font-semibold mb-2">Your Results</h3>
+                            <div id="bodyFatResult"></div>
+                        </div>
+                    `;
+                    break;
+            }
+            content.innerHTML = calculatorHtml;
+
+            if (type === 'bodyFat') {
+                document.getElementById('bodyFatGender').addEventListener('change', function () {
+                    document.getElementById('bodyFatHipDiv').style.display =
+                        this.value === 'female' ? 'block' : 'none';
+                });
+            }
+        }
+
+        function closeCalculator() {
+            document.getElementById('calculatorModal').classList.add('hidden');
+        }
+
+        function calculateBMI() {
+            const height = document.getElementById('bmiHeight').value / 100;
+            const weight = document.getElementById('bmiWeight').value;
+            const bmi = (weight / (height * height)).toFixed(1);
+            let category, advice, detailedAdvice;
+
+            if (bmi < 18.5) {
+                category = "Underweight";
+                advice = "Consider consulting a nutritionist to develop a healthy weight gain plan.";
+                detailedAdvice = `
+                    <ul class="list-disc list-inside mt-2">
+                        <li>Increase your calorie intake with nutrient-dense foods</li>
+                        <li>Include protein-rich foods in every meal</li>
+                        <li>Add healthy fats to your diet, such as avocados, nuts, and olive oil</li>
+                        <li>Consider strength training to build muscle mass</li>
+                        <li>Eat frequent, smaller meals throughout the day</li>
+                    </ul>
+                `;
+            } else if (bmi < 25) {
+                category = "Normal weight";
+                advice = "Maintain your current healthy lifestyle with a balanced diet and regular exercise.";
+                detailedAdvice = `
+                    <ul class="list-disc list-inside mt-2">
+                        <li>Continue eating a balanced diet rich in fruits, vegetables, lean proteins, and whole grains</li>
+                        <li>Aim for at least 150 minutes of moderate-intensity exercise per week</li>
+                        <li>Stay hydrated by drinking plenty of water throughout the day</li>
+                        <li>Get adequate sleep, aiming for 7-9 hours per night</li>
+                        <li>Manage stress through relaxation techniques or mindfulness practices</li>
+                    </ul>
+                `;
+            } else if (bmi < 30) {
+                category = "Overweight";
+                advice = "Focus on a balanced diet and increase physical activity to reach a healthier weight.";
+                detailedAdvice = `
+                    <ul class="list-disc list-inside mt-2">
+                        <li>Create a slight calorie deficit by reducing portion sizes and choosing lower-calorie options</li>
+                        <li>Increase your physical activity, aiming for at least 30 minutes of moderate exercise daily</li>
+                        <li>Choose whole foods over processed foods</li>
+                        <li>Include more fiber-rich foods in your diet to help you feel fuller</li>
+                        <li>Consider keeping a food diary to track your eating habits</li>
+                    </ul>
+                `;
+            } else {
+                category = "Obese";
+                advice = "Consult a healthcare professional for a personalized weight management plan.";
+                detailedAdvice = `
+                    <ul class="list-disc list-inside mt-2">
+                        <li>Seek guidance from a registered dietitian for a personalized meal plan</li>
+                        <li>Start with low-impact exercises like walking or swimming, gradually increasing intensity</li>
+                        <li>Set realistic, achievable goals for weight loss</li>
+                        <li>Consider joining a support group or finding an accountability partner</li>
+                        <li>Focus on overall health improvements, not just the number on the scale</li>
+                    </ul>
+                `;
+            }
+
+            document.getElementById('bmiResult').innerHTML = `
+                <p class="font-bold">Your BMI is ${bmi} (${category})</p>
+                <p class="mt-2">${advice}</p>
+                <h4 class="font-semibold mt-4">Detailed Advice:</h4>
+                ${detailedAdvice}
+                <p class="mt-4 text-sm italic">Remember, BMI is just one indicator of health. For a comprehensive evaluation, consult with a healthcare professional.</p>
+            `;
+        }
+
+        function calculateCalories() {
+            const age = document.getElementById('calorieAge').value;
+            const gender = document.getElementById('calorieGender').value;
+            const height = document.getElementById('calorieHeight').value;
+            const weight = document.getElementById('calorieWeight').value;
+            const activity = document.getElementById('calorieActivity').value;
+
+            let bmr;
+            if (gender === 'male') {
+                bmr = 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age);
+            } else {
+                bmr = 447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age);
+            }
+
+            const calories = Math.round(bmr * activity);
+
+            let advice, detailedAdvice;
+            if (activity < 1.375) {
+                advice = "Consider increasing your physical activity for better health.";
+                detailedAdvice = `
+            <ul class="list-disc list-inside mt-2">
+                <li>Start with short walks during breaks or after meals</li>
+                <li>Take the stairs instead of the elevator when possible</li>
+                <li>Try desk exercises or stretching routines</li>
+                <li>Consider standing or walking meetings</li>
+                <li>Aim for at least 150 minutes of moderate activity per week</li>
+            </ul>
+        `;
+            } else if (activity < 1.55) {
+                advice = "You have a good activity level. Try to maintain or slightly increase it.";
+                detailedAdvice = `
+            <ul class="list-disc list-inside mt-2">
+                <li>Mix up your routine with different types of exercises</li>
+                <li>Consider adding strength training 2-3 times a week</li>
+                <li>Try new activities or sports to keep things interesting</li>
+                <li>Gradually increase the intensity or duration of your workouts</li>
+                <li>Don't forget to include rest days for recovery</li>
+            </ul>
+        `;
+            } else {
+                advice = "Great job staying active! Make sure to balance your calorie intake with your activity level.";
+                detailedAdvice = `
+            <ul class="list-disc list-inside mt-2">
+                <li>Ensure you're eating enough to fuel your high activity level</li>
+                <li>Focus on nutrient-dense foods to support recovery</li>
+                <li>Stay hydrated, especially during intense workouts</li>
+                <li>Consider working with a sports nutritionist for optimal performance</li>
+                <li>Don't forget the importance of rest and recovery to prevent burnout</li>
+            </ul>
+        `;
+            }
+
+            document.getElementById('calorieResult').innerHTML = `
+        <p class="font-bold">Your estimated daily calorie needs: ${calories} calories</p>
+        <p class="mt-2">${advice}</p>
+        <h4 class="font-semibold mt-4">Detailed Advice:</h4>
+        ${detailedAdvice}
+        <p class="mt-4 text-sm italic">Remember, this is an estimate. Your actual needs may vary based on factors like muscle mass, genetics, and specific health conditions. For personalized advice, consult a registered dietitian.</p>
+    `;
+        }
+        function calculateBodyFat() {
+            const gender = document.getElementById('bodyFatGender').value;
+            const height = document.getElementById('bodyFatHeight').value;
+            const neck = document.getElementById('bodyFatNeck').value;
+            const waist = document.getElementById('bodyFatWaist').value;
+            const hip = gender === 'female' ? document.getElementById('bodyFatHip').value : 0;
+
+            let bodyFat;
+            if (gender === 'male') {
+                bodyFat = 495 / (1.0324 - 0.19077 * Math.log10(waist - neck) + 0.15456 * Math.log10(height)) - 450;
+            } else {
+                bodyFat = 495 / (1.29579 - 0.35004 * Math.log10(waist + hip - neck) + 0.22100 * Math.log10(height)) - 450;
+            }
+
+            const bodyFatPercentage = bodyFat.toFixed(2);
+            let category, advice;
+
+            if (bodyFatPercentage < 6) {
+                category = "Essential fat";
+                advice = "You have essential fat, which is vital for your body’s normal functions.";
+            } else if (bodyFatPercentage < 14) {
+                category = "Athletes";
+                advice = "You're in the athletic range, great for high physical performance.";
+            } else if (bodyFatPercentage < 24) {
+                category = "Fitness";
+                advice = "You're in the fitness range, which is generally associated with good health.";
+            } else if (bodyFatPercentage < 31) {
+                category = "Acceptable";
+                advice = "You're in the acceptable range, though reducing your body fat could improve health.";
+            } else {
+                category = "Obesity";
+                advice = "You may benefit from working on reducing body fat for better health.";
+            }
+
+            document.getElementById('bodyFatResult').innerHTML = `
+            <p class="font-bold">Your body fat percentage is ${bodyFatPercentage}% (${category}).</p>
+            <p class="mt-2">${advice}</p>
+            <p class="mt-4 text-sm italic">For a more accurate assessment of your body fat, consider professional testing methods like DEXA or bioelectrical impedance.</p>
+        `;
+        }
+    </script>

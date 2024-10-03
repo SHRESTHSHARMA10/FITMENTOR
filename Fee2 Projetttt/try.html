@@ -1,100 +1,243 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>How to Write a Travelogue</title>
-    <style>
-        * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
-
-body {
-    background-color: #f5f5f5;
-}
-
-.container {
-    max-width: 900px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.header {
-    text-align: center;
-    background-color: #003366;
-    padding: 20px;
-    border-radius: 10px;
-    color: #fff;
-    margin-bottom: 20px;
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-}
-
-.card {
-    background-color: #003366;
-    color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-}
-
-.icon {
-    font-size: 40px;
-    margin-right: 15px;
-}
-
-    </style>
+    <title>Fitness Calculators</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body>
-    <div class="container">
-        <div class="header">
-            <h1>How to Write a Travelogue?</h1>
+
+<body class="bg-gray-100 min-h-screen p-8">
+    <!-- Navigation Bar -->
+    <nav class="navbar flex justify-between items-center bg-gray-800 p-4">
+        <div class="logo">
+            <a href="index.html"><img src="logo-white-removebg-preview (1).png" alt="FitMentor logo"></a>
         </div>
-        <div class="grid">
-            <div class="card">
-                <div class="icon">🌅</div>
-                <p><strong>1. Select a place to write about:</strong> Make sure it is a place that you have been to and can provide a detailed description of.</p>
+        <div class="menu-icon" id="menu-icon">
+            &#9776;
+        </div>
+        <ul class="nav-links hidden md:flex space-x-8" id="nav-links">
+            <li><a href="#" class="text-white">WORKOUTS</a></li>
+            <li><a href="#" class="text-white">PROGRAMS</a></li>
+            <li><a href="community.html" class="text-white">COMMUNITY</a></li>
+            <li><a href="tools.html" class="text-white">TOOLS</a></li>
+            <li><a href="about.html" class="text-white">ABOUT</a></li>
+        </ul>
+        <div class="loginbtn">
+            <button class="bg-blue-500 text-white px-4 py-2 rounded"><a href="login.html">Login/Register</a></button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="max-w-6xl mx-auto">
+        <h1 class="text-3xl font-bold text-center mb-10">Fitness Calculators</h1>
+
+        <!-- Calculator Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- BMI Calculator Card -->
+            <div class="bg-white p-6 rounded-lg shadow-md cursor-pointer hover:shadow-lg transition"
+                onclick="openCalculator('bmi')">
+                <h2 class="text-xl font-semibold mb-2">BMI Calculator</h2>
+                <p class="text-gray-600">Calculate your Body Mass Index</p>
             </div>
-            <div class="card">
-                <div class="icon">📷</div>
-                <p><strong>2. Research the destination:</strong> Do some research about the destination to gain an understanding of it.</p>
+
+            <!-- Calorie Calculator Card -->
+            <div class="bg-white p-6 rounded-lg shadow-md cursor-pointer hover:shadow-lg transition"
+                onclick="openCalculator('calorie')">
+                <h2 class="text-xl font-semibold mb-2">Calorie Calculator</h2>
+                <p class="text-gray-600">Estimate your daily calorie needs</p>
             </div>
-            <div class="card">
-                <div class="icon">📝</div>
-                <p><strong>3. Make an outline:</strong> Create a plan for the travelogue. Outline the main points you want to discuss in the travelogue.</p>
+
+            <!-- Body Fat Percentage Calculator Card -->
+            <div class="bg-white p-6 rounded-lg shadow-md cursor-pointer hover:shadow-lg transition"
+                onclick="openCalculator('bodyFat')">
+                <h2 class="text-xl font-semibold mb-2">Body Fat % Calculator</h2>
+                <p class="text-gray-600">Estimate your body fat percentage</p>
             </div>
-            <div class="card">
-                <div class="icon">🌴</div>
-                <p><strong>4. Write the introduction:</strong> Introduce the destination and provide some background information about it.</p>
-            </div>
-            <div class="card">
-                <div class="icon">⛵</div>
-                <p><strong>5. Describe the destination:</strong> Describe the details of the place, such as its history, culture, attractions, and activities.</p>
-            </div>
-            <div class="card">
-                <div class="icon">🛶</div>
-                <p><strong>6. Include personal experiences:</strong> Write about your personal experiences in the destination.</p>
-            </div>
-            <div class="card">
-                <div class="icon">🏔️</div>
-                <p><strong>7. End with a conclusion:</strong> Offer your overall impressions and insights.</p>
-            </div>
-            <div class="card">
-                <div class="icon">✍️</div>
-                <p><strong>8. Edit and revise:</strong> Check your writing for grammar and spelling errors and make sure the content is clear and concise.</p>
+        </div>
+
+        <!-- Calculator Modal -->
+        <div id="calculatorModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden overflow-y-auto h-full w-full">
+            <div class="relative top-20 mx-auto p-5 border w-11/12 max-w-4xl shadow-lg rounded-md bg-white">
+                <div id="calculatorContent" class="flex flex-col md:flex-row"></div>
+                <div class="text-center mt-4">
+                    <button onclick="closeCalculator()"
+                        class="px-4 py-2 bg-gray-500 text-white text-base font-medium rounded-md shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-300">
+                        Close
+                    </button>
+                </div>
             </div>
         </div>
     </div>
+
+    <!-- Footer Section -->
+    <footer class="footer bg-gray-800 text-white mt-16 p-8">
+        <div class="footer-logo text-center mb-6">
+            <a href="index.html"><img src="logo-white-removebg-preview (1).png" alt="FitMentor logo"></a>
+        </div>
+        <div class="footer-social text-center mb-6">
+            <a href="#" class="social-icon mx-2"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon mx-2"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon mx-2"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon mx-2"><i class="fab fa-youtube"></i></a>
+        </div>
+        <ul class="footer-nav flex justify-center space-x-6 mb-6">
+            <li><a href="#" class="hover:underline">WORKOUTS</a></li>
+            <li><a href="#" class="hover:underline">PROGRAMS</a></li>
+            <li><a href="community.html" class="hover:underline">COMMUNITY</a></li>
+            <li><a href="#">TOOLS</a></li>
+            <li><a href="about.html" class="hover:underline">ABOUT</a></li>
+        </ul>
+        <p class="text-center">&copy; 2024 FitMentor. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript Functions -->
+    <script>
+        function openCalculator(type) {
+            const modal = document.getElementById('calculatorModal');
+            const content = document.getElementById('calculatorContent');
+            modal.classList.remove('hidden');
+
+            let calculatorHtml = '';
+            switch (type) {
+                case 'bmi':
+                    calculatorHtml = `
+                        <div class="md:w-1/2 p-4">
+                            <h2 class="text-2xl font-bold mb-4">BMI Calculator</h2>
+                            <div class="mb-4">
+                                <label class="block mb-2">Height (cm)</label>
+                                <input type="number" id="bmiHeight" class="w-full p-2 border rounded">
+                            </div>
+                            <div class="mb-4">
+                                <label class="block mb-2">Weight (kg)</label>
+                                <input type="number" id="bmiWeight" class="w-full p-2 border rounded">
+                            </div>
+                            <button onclick="calculateBMI()" class="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">Calculate BMI</button>
+                        </div>
+                        <div class="md:w-1/2 p-4 bg-gray-50 rounded-lg">
+                            <h3 class="text-xl font-semibold mb-2">Your Results</h3>
+                            <div id="bmiResult"></div>
+                        </div>
+                    `;
+                    break;
+                case 'calorie':
+                    calculatorHtml = `
+                        <div class="md:w-1/2 p-4">
+                            <h2 class="text-2xl font-bold mb-4">Calorie Calculator</h2>
+                            <div class="mb-4">
+                                <label class="block mb-2">Age</label>
+                                <input type="number" id="calorieAge" class="w-full p-2 border rounded">
+                            </div>
+                            <div class="mb-4">
+                                <label class="block mb-2">Gender</label>
+                                <select id="calorieGender" class="w-full p-2 border rounded">
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                            </div>
+                            <div class="mb-4">
+                                <label class="block mb-2">Height (cm)</label>
+                                <input type="number" id="calorieHeight" class="w-full p-2 border rounded">
+                            </div>
+                            <div class="mb-4">
+                                <label class="block mb-2">Weight (kg)</label>
+                                <input type="number" id="calorieWeight" class="w-full p-2 border rounded">
+                            </div>
+                            <div class="mb-4">
+                                <label class="block mb-2">Activity Level</label>
+                                <select id="calorieActivity" class="w-full p-2 border rounded">
+                                    <option value="1.2">Sedentary</option>
+                                    <option value="1.375">Lightly Active</option>
+                                    <option value="1.55">Moderately Active</option>
+                                    <option value="1.725">Very Active</option>
+                                    <option value="1.9">Extra Active</option>
+                                </select>
+                            </div>
+                            <button onclick="calculateCalories()" class="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">Calculate Calories</button>
+                        </div>
+                        <div class="md:w-1/2 p-4 bg-gray-50 rounded-lg">
+                            <h3 class="text-xl font-semibold mb-2">Your Results</h3>
+                            <div id="calorieResult"></div>
+                        </div>
+                    `;
+                    break;
+                case 'bodyFat':
+                    calculatorHtml = `
+                        <div class="md:w-1/2 p-4">
+                            <h2 class="text-2xl font-bold mb-4">Body Fat % Calculator</h2>
+                            <div class="mb-4">
+                                <label class="block mb-2">Age</label>
+                                <input type="number" id="bodyFatAge" class="w-full p-2 border rounded">
+                            </div>
+                            <div class="mb-4">
+                                <label class="block mb-2">Gender</label>
+                                <select id="bodyFatGender" class="w-full p-2 border rounded">
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                            </div>
+                            <div class="mb-4">
+                                <label class="block mb-2">Waist Circumference (cm)</label>
+                                <input type="number" id="bodyFatWaist" class="w-full p-2 border rounded">
+                            </div>
+                            <button onclick="calculateBodyFat()" class="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">Calculate Body Fat %</button>
+                        </div>
+                        <div class="md:w-1/2 p-4 bg-gray-50 rounded-lg">
+                            <h3 class="text-xl font-semibold mb-2">Your Results</h3>
+                            <div id="bodyFatResult"></div>
+                        </div>
+                    `;
+                    break;
+            }
+            content.innerHTML = calculatorHtml;
+        }
+
+        function closeCalculator() {
+            const modal = document.getElementById('calculatorModal');
+            modal.classList.add('hidden');
+        }
+
+        function calculateBMI() {
+            const height = parseFloat(document.getElementById('bmiHeight').value) / 100;
+            const weight = parseFloat(document.getElementById('bmiWeight').value);
+            const bmi = (weight / (height * height)).toFixed(2);
+
+            let category = '';
+            let advice = '';
+            let detailedAdvice = '';
+
+            if (bmi < 18.5) {
+                category = 'Underweight';
+                advice = 'You are below the healthy weight range.';
+                detailedAdvice = 'It is important to eat a balanced diet and consult a nutritionist.';
+            } else if (bmi >= 18.5 && bmi < 24.9) {
+                category = 'Normal weight';
+                advice = 'You are within the healthy weight range.';
+                detailedAdvice = 'Keep maintaining your current lifestyle.';
+            } else if (bmi >= 25 && bmi < 29.9) {
+                category = 'Overweight';
+                advice = 'You are above the healthy weight range.';
+                detailedAdvice = 'Consider a more active lifestyle and healthier eating habits.';
+            } else {
+                category = 'Obese';
+                advice = 'You are significantly above the healthy weight range.';
+                detailedAdvice = 'Consult a healthcare provider for guidance on weight management.';
+            }
+
+            document.getElementById('bmiResult').innerHTML = `
+                <p class="font-bold text-2xl">BMI: ${bmi}</p>
+                <p class="font-semibold text-lg">${category}</p>
+                <p class="mt-4">${advice}</p>
+                <div class="mt-4">${detailedAdvice}</div>
+            `;
+        }
+
+        // Other calculator functions (e.g., calculateCalories, calculateBodyFat) will follow similar logic
+    </script>
 </body>
+
 </html>

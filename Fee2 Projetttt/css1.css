@@ -141,6 +141,7 @@ body {
     height: 400px;
 }
 .app{
+    border: 2px solid #FFA500;
     height:430px;
 }
 
@@ -200,7 +201,7 @@ body {
     max-width: 800px;
     width: 100%;
     margin: 20px auto;
-    border: 3px solid #FFA500;
+    border: 2px solid #FFA500;
 }
 
 .left {
@@ -380,6 +381,15 @@ body {
     }
     .loginbtn{
         display: none;
+    }
+    .container {
+        width: 550px;
+    }
+    .app{
+        width: 550px;
+    }
+    .calendar div{
+        padding: 6px;
     }
 }
 .right{
